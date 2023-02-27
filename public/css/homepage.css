@@ -84,7 +84,7 @@ body {
     border-radius: 6px;
     text-decoration: none;
     color: white;
-    transition: background 0.5s;
+    transition: bg 0.5s;
     font-size: 30px;
 }
 
