@@ -16,7 +16,7 @@ Locations.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(600),
       allowNull: true,
       defaultValue: 'Locations',
     },
