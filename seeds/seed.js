@@ -1,25 +1,36 @@
-// Seed data needs to be rewrwitten to work with our project before running
+// Seed data rewritten to work with our project
 
 const sequelize = require('../config/connection');
-const { User, Project } = require('../models');
+const { Users, Locations, Trips, Tagged, Comments, Images } = require('../models');
 
 const userData = require('./userData.json');
-const projectData = require('./tripData.json');
+const locationData = require('./locationData.json');
+const tripData = require('./tripData.json');
+const tagData = require('./tagData.json');
+const commentData = require('./commentData.json');
+// To be implemented soon
+const imageData = require('./imageData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
+  await Users.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
+  console.log('\n----- USERS SEEDED -----\n');
 
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+  await Locations.bulkCreate(locationData);
+  console.log('\n----- LOCATIONS SEEDED -----\n');
+
+  await Trips.bulkCreate(tripData);
+  console.log('\n----- TRIPS SEEDED -----\n');
+
+  await Tagged.bulkCreate(tagData);
+  console.log('\n----- TAGGED SEEDED -----\n');
+
+  await Comments.bulkCreate(commentData);
+  console.log('\n----- Comments SEEDED -----\n');
 
   process.exit(0);
 };

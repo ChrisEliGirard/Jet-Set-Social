@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { User } = require('../../models');
-
+const { Users } = require('../../models');
+// User Creation Routes
+// Create User
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await Users.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -16,9 +17,10 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Login User
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await Users.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res
@@ -48,6 +50,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Logout User
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -56,6 +59,55 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+// User Data Routes
+// GET all Users
+router.get('/', async (req, res) => {
+  try {
+    const userData = await Users.findAll();
+    const users = userData.map((user) => user.get({plain: true}));
+
+    res.status(200).json(users);
+  } catch (err) {return res.status(404).json(err), console.log(err)};
+})
+
+// GET User by id
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await Users.findByPk(req.params.id);
+
+    if (!userData) {return res.status(404).json({message: 'No Location found with that id!'})};
+
+    res.status(200).json(userData);
+  } catch (err) {return res.status(404).json(err)};
+})
+
+// UPDATE a User
+router.put('/:id', async (req, res) => {
+  try {
+    const UserData = await Users.update(req.body,
+    {
+        where: {id: req.params.id}
+    });
+
+    if (!userData) {return res.status(404).json({ message: 'No Location found with that id!' })};
+
+    res.status(200).json(userData);
+  } catch (err) {res.status(404).json(err)};
+})
+
+// DELETE a User
+router.delete('/:id', async (req, res) => {
+  try {
+    const userData = await Users.destroy({
+      where: {id: req.params.id}
+    });
+
+    if (!userData) {return res.status(404).json({ message: 'No Location found with this id!' })};
+
+    res.status(200).json(userData);
+  } catch (err) {res.status(500).json(err)};
 });
 
 module.exports = router;

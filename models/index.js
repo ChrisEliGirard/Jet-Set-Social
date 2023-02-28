@@ -49,6 +49,17 @@ Comments.belongsTo(Users, {
   foreignKey: 'user_id'
 });
 
+// A trip can have many images
+Trips.hasMany(Images, {
+  foreignKey: 'trip_id',
+  onDelete: 'CASCADE'
+});
+
+// Images belong to one trip
+Images.belongsTo(Trips, {
+  foreignKey: 'trip_id'
+});
+
 // Trips have many Tagged
 Trips.hasMany(Tagged, {
   foreignKey: 'trip_id',
