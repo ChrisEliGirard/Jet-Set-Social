@@ -15,7 +15,7 @@ Images.init(
       type: DataTypes.BLOB('long'),
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(600),
     },
     date_created: {
       type: DataTypes.DATE,
@@ -42,7 +42,7 @@ Images.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'trips',
+    modelName: 'images',
   }
 );
 

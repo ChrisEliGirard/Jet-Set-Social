@@ -1,16 +1,43 @@
 [
   {
-    "name": "Sal",
+    "name": "Aaron Burton",
+    "username": "aaronburton",
+    "email": "aaronburton@gmail.com",
+    "password": "jetsetpro1"
+  },
+  {
+    "name": "Christopher Girard",
+    "username": "chrisgirard",
+    "email": "christophergirard@gmail.com",
+    "password": "jetsetpro2"
+  },
+  {
+    "name": "Fayane Jean",
+    "username": "fayanejean",
+    "email": "fayanejean@gmail.com",
+    "password": "jetsetpro3"
+  },
+  {
+    "name": "Isoyor Kubiti",
+    "username": "isoyorkubiti",
+    "email": "isoyorkubiti@gmail.com",
+    "password": "jetsetpro4"
+  },
+  {
+    "name": "Sal Lemons",
+    "username": "sallemon",
     "email": "sal@hotmail.com",
     "password": "password12345"
   },
   {
-    "name": "Lernantino",
+    "name": "Lernantino Martins",
+    "username": "lernantino",
     "email": "lernantino@gmail.com",
     "password": "password12345"
   },
   {
-    "name": "Amiko",
+    "name": "Amiko Deus",
+    "username": "amikodeus",
     "email": "amiko2k20@aol.com",
     "password": "password12345"
   }

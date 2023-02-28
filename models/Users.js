@@ -35,7 +35,7 @@ Users.init(
         isEmail: true,
       },
     },
-    profile_picture: {
+    profile_image: {
       type: DataTypes.BLOB('long'),
       allowNull: true,
     },
