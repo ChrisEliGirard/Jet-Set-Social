@@ -4,42 +4,37 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jet-Set Vacations</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Jet Set Social</title>
+  <link rel="stylesheet" href="homepage.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/56a474b8e5.js" crossorigin="anonymous"></script>
+  <script src="/js/carousel.js" defer></script>
 </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+<body class="bg-orange-200">
+  <header class="bg-green-900 p-4">
+    <nav class=" container mx-auto  flex flex-wrap justify-between items-center text-white">
+      <div class="text-4xl">Jet Set Vacations</div>
+      <!-- - Search Bar - -->
+      <div>
+        <form class="flex-initial">
+          <i class="fa-solid fa-magnifying-glass-location"></i>
+          <input class="w-70 h-10 text-sm rounded shadow-xl" id="userInput" type="text" placeholder="   Search..." />
+        </form>
+      </div>
+      <!-- - Dropdown menu WIP - -->
+      <div>
+        <i class="fa-solid fa-user"></i>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+        <a class="ml-8 font-bold hover:underline" href="#">Home</a>
+        <a class="ml-8 font-bold hover:underline" href="#">Profile</a>
+        <a class="ml-8 font-bold hover:underline" href="#">Logout</a>
+
+      </div>
+    </nav>
+  </header>
 </body>
 
 </html>
