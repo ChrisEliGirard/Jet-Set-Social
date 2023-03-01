@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Images } = require('../../models');
+const remoteConnect = require('../../utils/remoteConnect');
 const withAuth = require('../../utils/auth');
 
 // GET all Images
@@ -26,8 +27,22 @@ router.get('/:id', async (req, res) => {
 // CREATE a new Image
 router.post('/', async (req, res) => {
   try {
+    // The image variable is a placeholder for our uploaded image.
+    const { body, image } = req;
+
+    let result = await remoteConnect.saveFile(image);
+
+    // Assuming the body uses our naming conventions
+    let imageData = {
+      image: result.file_id,          // Use this in the src for img tag
+      image_name: result.filename,    // Use this for alt description in img tag
+      description: body.description,
+      user_id: body.user_id,
+      trip_id: body.trip_id,
+    };
+
     const newImage = await Images.create(
-      ...req.body
+      ...imageData
     );
 
     res.status(200).json(newImage);
@@ -37,7 +52,21 @@ router.post('/', async (req, res) => {
 // UPDATE an Image
 router.put('/:id', async (req, res) => {
   try {
-    const imageData = await Images.update(req.body,
+    // The image variable is a placeholder for our uploaded image.
+    const { body, image } = req;
+
+    let result = await remoteConnect.saveFile(image);
+
+    // Assuming the body uses our naming conventions
+    let newImage = {
+      image: result.file_id,          // Use this in the src for img tag
+      image_name: result.filename,    // Use this for alt description in img tag
+      description: body.description,
+      user_id: body.user_id,
+      trip_id: body.trip_id,
+    };
+
+    const imageData = await Images.update(newImage,
     {
         where: {id: req.params.id}
     });
