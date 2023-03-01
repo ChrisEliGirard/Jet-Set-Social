@@ -1,72 +1,64 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Trips, Users, Images} = require('../models');
 const withAuth = require('../utils/auth');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
+// Homepage View Render
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
+    // Get all Image Data and JOIN with user data
+    const imageData = await Images.findAll({
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ['name'],
         },
+        {
+          model: Trips,
+          attributes: ['name']
+        }
       ],
     });
 
     // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const images = imageData.map((image) => image.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      projects, 
+      images, 
       logged_in: req.session.logged_in 
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  } catch (err) {res.status(500).json(err)};
 });
 
-router.get('/project/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const project = projectData.get({ plain: true });
-
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+// Get route for the search bar results
+router.get('/search/:search', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
+    const searchUserData = await Users.findAll({
+      where: {
+        [Op.or]: [
+          {username: {[Op.like]: '%' + `${req.params.search}` + '%'}},
+          {name: {[Op.like]: '%' + `${req.params.search}` + '%'}},
+      ]},
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
     });
 
-    const user = userData.get({ plain: true });
+    const searchTripData = await Trips.findAll({
+      where:{name: '%' + `${req.params.name}` + '%'},
+    });
+
+    if(!searchUserData && searchTripData) {return {message: "No Users or Trips found with this Name"}}
+    
+    const user = searchUserData.map((users) => users.get({ plain: true }));
+    const trip = searchTripData.map((trips) => trips.get({ plain: true }));
 
     res.render('profile', {
-      ...user,
+      ...user, ...trip,
       logged_in: true
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  } catch (err) {res.status(500).json(err), console.log(err)};
 });
 
 router.get('/login', (req, res) => {
