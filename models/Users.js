@@ -36,11 +36,11 @@ Users.init(
       },
     },
     profile_image: {
-      type: DataTypes.String(400),
+      type: DataTypes.STRING(400),
       allowNull: true,
     },
     image_name: {
-      type: DataTypes.String(400),
+      type: DataTypes.STRING(400),
       allowNull: true,
     },
     password: {

@@ -12,10 +12,10 @@ Images.init(
       autoIncrement: true,
     },
     image: {
-      type: DataTypes.String(400),
+      type: DataTypes.STRING(400),
     },
     image_name: {
-      type: DataTypes.String(400),
+      type: DataTypes.STRING(400),
       allowNull: true,
     },
     description: {
