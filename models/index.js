@@ -1,6 +1,6 @@
 const Users = require('./Users');
 const Trips = require('./Trips');
-const Tagged = require('./Tagged');
+const Tagged = require('./Tagged.js');
 const Images = require('./Images');
 const Locations = require('./Locations');
 const Comments = require('./Comments');

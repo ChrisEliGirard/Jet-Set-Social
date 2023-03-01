@@ -36,7 +36,11 @@ Users.init(
       },
     },
     profile_image: {
-      type: DataTypes.BLOB('long'),
+      type: DataTypes.String(400),
+      allowNull: true,
+    },
+    image_name: {
+      type: DataTypes.String(400),
       allowNull: true,
     },
     password: {

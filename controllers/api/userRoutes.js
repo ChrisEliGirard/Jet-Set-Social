@@ -1,10 +1,27 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
+const remoteConnect = require('../../utils/remoteConnect');
+
 // User Creation Routes
 // Create User
 router.post('/', async (req, res) => {
   try {
-    const userData = await Users.create(req.body);
+    // The image variable is a placeholder for our uploaded image.
+    const { body, image } = req;
+
+    let result = await remoteConnect.saveFile(image);
+
+    // Assuming the body uses our naming conventions
+    let newUser = {
+      name: body.name,
+      username: body.username,
+      email: body.email,
+      profile_image: result.file_id,  // Use this in the src for img tag
+      image_name: result.filename,    // Use this for alt description in img tag
+      password: body.password,
+    };
+
+    const userData = await Users.create(newUser);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -77,7 +94,7 @@ router.get('/:id', async (req, res) => {
   try {
     const userData = await Users.findByPk(req.params.id);
 
-    if (!userData) {return res.status(404).json({message: 'No Location found with that id!'})};
+    if (!userData) { return res.status(404).json({ message: 'No User found with that id!' }); };
 
     res.status(200).json(userData);
   } catch (err) {return res.status(404).json(err)};
@@ -86,12 +103,27 @@ router.get('/:id', async (req, res) => {
 // UPDATE a User
 router.put('/:id', async (req, res) => {
   try {
-    const UserData = await Users.update(req.body,
+    // The image variable is a placeholder for our uploaded image.
+    const { body, image } = req;
+
+    let result = await remoteConnect.saveFile(image);
+
+    // Assuming the body uses our naming conventions
+    let newUser = {
+      name: body.name,
+      username: body.username,
+      email: body.email,
+      profile_image: result.file_id,  // Use this in the src for img tag
+      image_name: result.filename,    // Use this for alt description in img tag
+      password: body.password,
+    };
+
+    const UserData = await Users.update(newUser,
     {
         where: {id: req.params.id}
     });
 
-    if (!userData) {return res.status(404).json({ message: 'No Location found with that id!' })};
+    if (!userData) { return res.status(404).json({ message: 'No User found with that id!' }); };
 
     res.status(200).json(userData);
   } catch (err) {res.status(404).json(err)};
@@ -104,7 +136,7 @@ router.delete('/:id', async (req, res) => {
       where: {id: req.params.id}
     });
 
-    if (!userData) {return res.status(404).json({ message: 'No Location found with this id!' })};
+    if (!userData) { return res.status(404).json({ message: 'No User found with this id!' }); };
 
     res.status(200).json(userData);
   } catch (err) {res.status(500).json(err)};

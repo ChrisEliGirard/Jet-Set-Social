@@ -12,10 +12,14 @@ Images.init(
       autoIncrement: true,
     },
     image: {
-      type: DataTypes.BLOB('long'),
+      type: DataTypes.String(400),
+    },
+    image_name: {
+      type: DataTypes.String(400),
+      allowNull: true,
     },
     description: {
-      type: DataTypes.STRING(600),
+      type: DataTypes.STRING(800),
     },
     date_created: {
       type: DataTypes.DATE,

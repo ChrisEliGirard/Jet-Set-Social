@@ -12,7 +12,7 @@ Comments.init(
       autoIncrement: true,
     },
     comment: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(800),
       allowNull: false,
     },
     date_created: {
