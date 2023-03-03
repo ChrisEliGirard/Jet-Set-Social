@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jet Set Social</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/homepage.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/56a474b8e5.js" crossorigin="anonymous"></script>
   <script src="js/carousel.js" defer></script>
@@ -25,9 +26,13 @@
       <div>
         <i class="fa-solid fa-user"></i>
 
-        <a class="ml-8 font-bold hover:underline" href="#">Home</a>
-        <a class="ml-8 font-bold hover:underline" href="#">Profile</a>
-        <a class="ml-8 font-bold hover:underline" href="#">Logout</a>
+        <a class="ml-8 font-bold hover:underline" href="/">Home</a>
+        <a class="ml-8 font-bold hover:underline" href="/profile">Profile</a>
+        {{#if logged_in}}
+          <a class="ml-8 font-bold hover:underline" id="logout" href="#">Logout</a>
+        {{else}}
+          <a class="ml-8 font-bold hover:underline" href="/login">Login</a>
+        {{/if}}
         
       </div>
     </nav>
