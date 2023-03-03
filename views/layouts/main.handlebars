@@ -17,7 +17,8 @@
       <div>
         <form class="flex-initial">
           <i class="fa-solid fa-magnifying-glass-location mr-2"></i>
-          <input class="w-100 h-100 text-sm rounded shadow-xl" id="userInput" type="text" placeholder="   Search..." />
+          <input class="w-100 h-100 text-sm text-black rounded shadow-xl" id="userInput" type="text" placeholder="   Search..." />
+
         </form>
       </div>
       <!-- Dropdown Menu WIP -->
@@ -39,7 +40,7 @@
     {{{body}}}
   </main>
   </div>
-</body>
+
 <footer class="bg-gradient-to-r from-green-800 via-green-600 to-lime-600">
   <div class="container mx-auto flex justify-center items-center text-white uppercase py-4">
     <i class="fa-sharp fa-solid fa-plane"></i>
@@ -48,4 +49,9 @@
 </footer>
 
 <script src="js/search.js"></script>
+  <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+</body>
 </html>
