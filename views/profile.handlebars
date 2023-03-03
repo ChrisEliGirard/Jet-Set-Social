@@ -1,199 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title></title>
-      <meta name="author" content="name">
-      <meta name="description" content="description here">
-      <meta name="keywords" content="keywords,here">
-      <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-      <link href="public\css\style.css" rel="stylesheet">
-      <!--Totally optional :) -->
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-   </head>
-   <div class="flex justify-center">
-      <div class="mb-3 xl:w-96">
-        <div class="relative mb-4 flex w-full flex-wrap items-stretch">
-          <input
-            type="search"
-            class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
-            placeholder="Search"
-            aria-label="Search"
-            aria-describedby="button-addon2" />
-          <span
-            class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
-            id="basic-addon2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              class="h-5 w-5">
-              <path
-                fill-rule="evenodd"
-                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                clip-rule="evenodd" />
-            </svg>
-          </span>
-        </div>
-      </div>
+<!--Main Content-->
+<!-- Main Body Container -->
+<div class="w-full h-auto py-16 px-2 bg-gray-400 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
+  <div class="flex-block sm:flex columns-1 sm:columns-2 px-2">
+    <!-- Profile Image Div -->
+    <div id="avatar" class="break-after-column w-20 pb-2 sm:pb-0">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+        class="rounded-full shadow-lg pl-4 pr-2 sm:w-20 md:w-40 lg:w-40"
+        alt="Avatar"
+      />
+      <h2 class="text-white text-font-bold">{{name}}</h2>
     </div>
-   <body class="bg-black-900 font-sans leading-normal tracking-normal">
-      <div class="flex md:flex-row-reverse flex-wrap">
-		
-		 <!--Main Content-->
-     
-     <div
-     class="flex-col w-full py-4 mx-auto bg-gray-400 border-b-2 border-r-2 border-gray-300 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-2/3">
-            <div class="flex-col pt-16 px-16">
-               <img
-  src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-  class="w-40 rounded-full shadow-lg"
-  alt="Avatar" />
-  <div class="flex justify-center">
-   <div
-     class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
-     <img
-       class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-       src="https://s3.amazonaws.com/urcomped/Advertisement/OfferCampaign/d0ff8f92-2c5e-468b-a7f6-052b128dad3cimage-offercampaign-1904-jpg.jpg"
-       alt="" />
-     <div class="flex flex-col justify-around p-5">
-       <h5
-         class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-         Bahamas Trip
-       </h5>
-       <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-         This is a wider card with supporting text below as a natural
-         lead-in to additional content. This content is a little bit
-         longer.
-       </p>
-       <p class="text-xs text-neutral-500 dark:text-neutral-300">
-         Last updated 3 mins ago
-       </p>
-     </div>
-   </div>
- </div>
- <hr
-  class="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
- <div class="flex justify-between">
-   <div
-     class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
-     <img
-       class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-       src="https://andantetravels.co.uk/media/2348/rome-colosseum.jpg?anchor=center&mode=crop&heightRatio=1"
-       alt="" />
-     <div class="flex flex-col justify-around p-6">
-       <h5
-         class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-         Rome Trip
-       </h5>
-       <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-         This is a wider card with supporting text below as a natural
-         lead-in to additional content. This content is a little bit
-         longer.
-       </p>
-       <p class="text-xs text-neutral-500 dark:text-neutral-300">
-         Last updated 3 mins ago
-       </p>
-     </div>
-   </div>
- </div>
- <hr
-  class="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
- <div class="flex justify-center">
-   <div
-     class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
-     <img
-       class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-       src="https://halicopteraway.com/wp-content/uploads/2020/02/IMG_6665.jpg"
-       alt="" />
-     <div class="flex flex-wrap justify-start p-6">
-       <h5
-         class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-         Paris Trip
-       </h5>
-       <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-         Trip info
-       </p>
-       <p class="text-xs text-neutral-500 dark:text-neutral-300">
-         Last updated 3 mins ago
-       </p>
-     </div>
-   </div>
- </div>
-<!-- component -->
-<div class="antialiased mx-auto max-w-screen-md top: 20;
-right: 20;
-bottom: 0;
-left: 0; ">
-
-  <h3 class="mb-4 text-lg font-semibold text-black-900">Comments</h3>
-
-  <div class="space-y-5">
-
-    <div class="flex bg-white rounded-l-lg">
-      <div class="flex-shrink-0 mr-3">
-        <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
-      </div>
-      <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-normal">
-        <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
-        <p class="text-sm">
-         hi.
-        </p>
-        <div class="mt-4 flex items-center">
-          <div class="flex -space-x-2 mr-2">
-            <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
-            <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
-          </div>
-          <div class="text-sm text-gray-500 font-semibold">
-            5 Replies
+    <!-- Container for All the Trip Cards -->
+    <div id="trips-container" class="container space-y-3">
+      {{#each trips as |trip|}}
+      <div id="trip-card" class="container flex-block sm:flex sm:coloumns-2 mx-auto content-center h-max bg-white border-gray-200 border-2 rounded-xl">
+        <figure id="trip-photo" class="sm:float-left sm:w-1/2 sm:border-r-2">
+          <img 
+            src="https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk1MDcxNzQ2NTY5Njc2NTE0/gettyimages-584791924.jpg"
+            class="flex-shrink rounded-xl sm:rounded-none sm:rounded-l-xl"
+            alt="Trip Photo of {{trip.name}}"
+          />
+        </figure>
+        <div id="trip-details" class="sm:float-right sm:w-1/2 px-1 bg-white rounded-xl sm:rounded-r-xl">
+          <h2 class="py-2 text-center font-bold border-b-2">{{trip.name}}</h2>
+          <p class="pl-2 pt-2">{{trip.description}}</p>
+          <div>
+            <p class="pl-2 pt-2">{{trip.comments.[0].comment}}</p>
+            <p class="text-right">{{trip.comments.[0].user_id}}</p>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="flex bg-white rounded-l-lg">
-      <div class="flex-shrink-0 mr-3">
-        <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
-      </div>
-      <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-        <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
-        <p class="text-sm">
-          
-        </p>
-        
-        <h4 class="my-5 uppercase tracking-wide text-gray-900 font-bold text-xs">Replies</h4>
-
-        <div class="space-y-4">
-          <div class="flex">
-            <div class="flex-shrink-0 mr-3">
-              <img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
-            </div>
-            <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-              <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
-              <p class="text-xs sm:text-sm">
-              hi.
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex-shrink-0 mr-3">
-              <img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
-            </div>
-            <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-              <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
-              <p class="text-xs sm:text-sm">
-                hi.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
+  <div id="overlay"></div>
 </div>
-   </body>
-</html>
 
+<script src="./js/tripCreateForm.js"></script>
 <script src="./js/profile.js"></script>
