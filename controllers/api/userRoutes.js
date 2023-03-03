@@ -1,22 +1,24 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
 const remoteConnect = require('../../utils/remoteConnect');
+const multer = require('multer');
+const upload = multer();
 
 // User Creation Routes
 // Create User
-router.post('/', async (req, res) => {
+router.post('/', upload.any(), async (req, res) => {
   try {
-    // The image variable is a placeholder for our uploaded image.
-    const { body, image } = req;
+    // files is a standard variable that comes in the request.
+    const { body, files } = req;
 
-    let result = await remoteConnect.saveFile(image);
+    let result = await remoteConnect.saveFiles(files);
 
     // Assuming the body uses our naming conventions
     let newUser = {
       name: body.name,
       username: body.username,
       email: body.email,
-      profile_image: result.file_id,  // Use this in the src for img tag
+      profile_image: `https://drive.google.com/uc?export=view&id=${result.file_id}`,  // just use it as is
       image_name: result.filename,    // Use this for alt description in img tag
       password: body.password,
     };
@@ -80,7 +82,7 @@ router.post('/logout', (req, res) => {
 
 // User Data Routes
 // GET all Users
-router.get('/', async (req, res) => {
+router.get('/', upload.any(), async (req, res) => {
   try {
     const userData = await Users.findAll();
     const users = userData.map((user) => user.get({plain: true}));
@@ -103,43 +105,61 @@ router.get('/:id', async (req, res) => {
 // UPDATE a User
 router.put('/:id', async (req, res) => {
   try {
-    // The image variable is a placeholder for our uploaded image.
-    const { body, image } = req;
+    // Get the old user data 
+    const userData = await Users.findByPk(req.params.id);
+    const { body, files } = req;
+
+    if (files && files.length > 0) {
+      let result = await remoteConnect.saveFiles(files);
+      await remoteConnect.deleteFile(userData.profile_image);
+      userData.profile_image = `https://drive.google.com/uc?export=view&id=${result.file_id}`;
+      userData.image_name = result.name;
+    }
 
     let result = await remoteConnect.saveFile(image);
 
     // Assuming the body uses our naming conventions
     let newUser = {
-      name: body.name,
-      username: body.username,
-      email: body.email,
-      profile_image: result.file_id,  // Use this in the src for img tag
-      image_name: result.filename,    // Use this for alt description in img tag
-      password: body.password,
+      name: body.name ? body.name : userData.name,
+      username: body.username ? body.username : userData.username,
+      email: body.email ? body.email : userData.email,
+      profile_image: userData.profile_image,  // Use this in the src for img tag
+      image_name: userData.image_name,    // Use this for alt description in img tag
+      password: body.password ? body.password : userData.password,
     };
 
-    const UserData = await Users.update(newUser,
+    const updatedUser = await Users.update(newUser,
     {
         where: {id: req.params.id}
     });
 
-    if (!userData) { return res.status(404).json({ message: 'No User found with that id!' }); };
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'No User found with that id!' });
+    };
 
-    res.status(200).json(userData);
-  } catch (err) {res.status(404).json(err)};
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    res.status(404).json(err);
+  };
 })
 
 // DELETE a User
 router.delete('/:id', async (req, res) => {
   try {
-    const userData = await Users.destroy({
+    let userData = await Users.findByPk(req.params.id);
+    await remoteConnect.deleteFile(userData.profile_image);
+    userData = await Users.destroy({
       where: {id: req.params.id}
     });
 
-    if (!userData) { return res.status(404).json({ message: 'No User found with this id!' }); };
+    if (!userData) {
+      return res.status(404).json({ message: 'No User found with this id!' });
+    };
 
     res.status(200).json(userData);
-  } catch (err) {res.status(500).json(err)};
+  } catch (err) {
+    res.status(500).json(err);
+  };
 });
 
 module.exports = router;
