@@ -1,1 +1,64 @@
-<!-- Html for the homepage to be added here -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jet Set Social</title>
+  <link rel="stylesheet" href="css/homepage.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/56a474b8e5.js" crossorigin="anonymous"></script>
+  <script src="js/carousel.js" defer></script>
+</head>
+
+<body class="bg-orange-200">
+  <header class="bg-gradient-to-r from-green-700 to-lime-600 ... p-4">
+    <nav class=" container mx-auto  flex flex-wrap justify-between items-center text-white">
+      <div class="text-4xl cursor-pointer"><a href="#"><i class="fa-sharp fa-solid fa-plane"></i>Jet Set Vacations</a></div>
+      <!-- - Search Bar - -->
+      <div>
+        <form class="flex-initial">
+          <i class="fa-solid fa-magnifying-glass-location mr-2"></i>
+          <input class="w-100 h-100 text-sm rounded shadow-xl" id="userInput" type="text" placeholder="   Search..." />
+        </form>
+      </div>
+      <!-- - Dropdown Menu WIP - -->
+      <div>
+        <i class="fa-solid fa-user"></i>
+
+        <a class="ml-8 font-bold hover:underline" href="#">Home</a>
+        <a class="ml-8 font-bold hover:underline" href="#">Profile</a>
+        <a class="ml-8 font-bold hover:underline" href="#">Logout</a>
+
+      </div>
+    </nav>
+  </header>
+  <!-- - Carousel of Random Trips - -->
+
+  <section aria-label="Newest photos">
+    <div class="carousel" data-carousel>
+      <button class="carousel-button prev" data-carousel-button="prev">&#8592;</button>
+      <button class="carousel-button next" data-carousel-button="next">&#8594;</button>
+      <ul data-slides>
+        <li class="slide" data-active>
+          <img src="./Images/yana-marudova-I9irKyriQAc-unsplash.jpg" alt="Travel IMG#1">
+        </li>
+        <li class="slide">
+          <img src="./Images/tom-podmore-KS1BOYSzjh0-unsplash.jpg" alt="Travel IMG#2">
+        </li>
+        <li class="slide">
+          <img src="./Images/tom-podmore-t_TvL0ZLVyo-unsplash.jpg" alt="Travel IMG#3">
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- - login Button - -->
+  <div>
+    <button class="login-btn transition ease-in-out delay-150 bg-gradient-to-r from-green-800 via-green-600 to-lime-600 ... hover:-translate-y-1 hover:scale-110 hover:bg-yellow-500 duration-300 ..."><a href="#">Adventure Awaits!</a></button>
+  </div>
+<footer class="bg-gradient-to-r from-green-800 via-green-600 to-lime-600">
+  <div class="container mx-auto flex justify-center items-center text-white uppercase py-4">
+    <i class="fa-sharp fa-solid fa-plane"></i>
+    <p>Made by Jet Set Social</p>
+  </div>
+</footer>
+</body>
