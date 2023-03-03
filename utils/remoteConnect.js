@@ -7,6 +7,7 @@ const clientId = process.env.REMOTE_ID || '';
 const clientSecret = process.env.REMOTE_SECRET || '';
 const redirectUri = process.env.REMOTE_URI || '';
 const refreshToken = process.env.REMOTE_TOKEN || '';
+const resource = { "role": "reader", "type": "anyone" };
 
 let driveClient;
 const folderName = 'Jet-Social';
@@ -68,7 +69,6 @@ const saveFile = async (aFile) => {
 	});
 
 	console.log(`Uploaded file ${data.name} ${data.id}`);
-	const resource = { "role": "reader", "type": "anyone" };
 	await driveClient.permissions.create({ fileId: data.id, resource: resource });
 
 	return { filename: data.name, file_id: data.id };
@@ -77,12 +77,33 @@ const saveFile = async (aFile) => {
 // batch upload
 const saveFiles = async (files) => {
 	let results = [];
-	for (let f = 0; f < files.length; f += 1) {
-		let sendfile = await saveFile(files[f]);
+	for (let i = 0; i < files.length; i++) {
+		let sendfile = await saveFile(files[i]);
 		results.push(sendfile);
 	}
 
+	if (results.length === 1) {
+		return results[0];
+	}
+
 	return results;
+};
+
+const deleteFile = async (fieldValue) => {
+	try {
+		const fileId = fieldValue.split('id=')[1];
+		const result = await driveClient.files.delete({
+			'fileId': fileId
+		});
+
+		if (result.status === 204) {
+			return true;
+		} else {
+			return false;
+		}
+	} catch (err) {
+		return false;
+	}
 };
 
 (async () => {
@@ -99,6 +120,6 @@ const saveFiles = async (files) => {
 })();
 
 module.exports = {
-	saveFile,
-	saveFiles
+	saveFiles,
+	deleteFile
 };
