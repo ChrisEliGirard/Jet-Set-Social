@@ -17,7 +17,7 @@ Trips.init(
       defaultValue: 'any title',
     },
     description: {
-      type: DataTypes.STRING(600),
+      type: DataTypes.STRING(800),
     },
     date_created: {
       type: DataTypes.DATE,
