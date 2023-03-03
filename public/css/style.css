@@ -185,10 +185,10 @@ form.sign-up-form {
 .btn {
   width: 150px;
   height: 50px;
-  border: none;
+  border: solid #e3b432;
   border-radius: 50px;
-  background: #14532d;
-  color: #fff;
+  background: none;
+  color: black;
   font-weight: 600;
   margin: 10px 0;
   text-transform: uppercase;
@@ -199,36 +199,12 @@ form.sign-up-form {
   background: #e3b432;
 }
 
-.social-text {
-  margin: 10px 0;
-  font-size: 16px;
-}
 
-.social-media {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icon {
-  height: 45px;
-  width: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #14532d;
-  border: 1px solid #14532d;
-  border-radius: 50px;
-  margin: 0 5px;
-}
 
 a {
   text-decoration: none;
 }
 
-.social-icon:hover {
-  color: #e3b432;
-  border-color: #e3b432;
-}
 
 .panels-container {
   position: absolute;
