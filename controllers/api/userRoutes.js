@@ -39,12 +39,15 @@ router.post('/', upload.any(), async (req, res) => {
 // Login User
 router.post('/login', async (req, res) => {
   try {
-    const userData = await Users.findOne({ where: { email: req.body.email } });
+    let userData = await Users.findOne({ where: { email: req.body.userInfo } });
+    if (!userData) {
+      userData = await Users.findOne({ where: { username: req.body.userInfo } });
+    }
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect username or email, please try again' });
       return;
     }
 
@@ -53,7 +56,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect password, please try again' });
       return;
     }
 
