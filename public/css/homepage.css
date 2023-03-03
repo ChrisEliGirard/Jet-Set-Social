@@ -6,16 +6,19 @@
 
 body {
     margin: 0;
+    height: 100vh;
 }
+
 
 .carousel {
     width: 80vw;
     height: 70vh;
     position: relative;
     margin-left: 10%;
-    margin-top: 15px;
-    border: solid #365314;
+    margin-top: 30px;
+    border:10px solid #365314;
     border-radius: 6px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .slide {
@@ -44,7 +47,7 @@ body {
     position: absolute;
     z-index: 2;
     background: none;
-    border: none;
+    border: solid;
     font-size: 4rem;
     top: 50%;
     transform: translateY(-50%);
@@ -77,18 +80,18 @@ body {
 .login-btn {
     display: block;
     margin: 50px auto;
-    width: fit-content;
-    border: 1px solid #365314;
-    background-color: #365314;
+    border: none;
+    /* background: linear-gradient( #14532d, #22c55e); */
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
     color: white;
-    transition: bg 0.5s;
-    font-size: 30px;
+    transition: background 0.5s;
+    font-size: 50px;
 }
 
 .login-btn:hover {
-    background-color: #e3b432;
+    background: #e3b432;
     border: 1px solid #e3b432;
+    transition: .5s ease-in-out;
 }
