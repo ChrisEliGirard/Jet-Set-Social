@@ -53,9 +53,13 @@ router.get('/search/:search', async (req, res) => {
     
     const user = searchUserData.map((users) => users.get({ plain: true }));
     const trip = searchTripData.map((trips) => trips.get({ plain: true }));
-
-    res.render('profile', {
-      ...user, ...trip,
+    console.log(user);
+    
+    res.render('search', {
+      user,
+      trip,
+      hasUsers: true,
+      hasTrips: true,
       logged_in: true
     });
   } catch (err) {res.status(500).json(err), console.log(err)};
