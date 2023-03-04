@@ -52,7 +52,7 @@
             </ul>
           </div>
         </div>
-
+        
         {{!-- <div>
           <i class="fa-solid fa-user"></i>
 
@@ -71,7 +71,7 @@
       {{{body}}}
     </main>
   </div>
-</body>
+
 <footer class="bg-gradient-to-r from-green-800 via-green-600 to-lime-600">
   <div class="container mx-auto flex justify-center items-center text-white uppercase py-4">
     <i class="fa-sharp fa-solid fa-plane mr-2"></i>
@@ -79,5 +79,9 @@
   </div>
 </footer>
 <script src="js/search.js"></script>
-
-</html>
+<!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+   
+</body>
