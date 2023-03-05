@@ -38,16 +38,19 @@
             class="z-10 hidden bg-white divide-y divide-lime-100 rounded-lg shadow w-44 bg-gradient-to-b from-lime-500 to-yellow-400">
             <ul class="py-2 text-sm text-white text-white" aria-labelledby="dropdownDefaultButton">
               <li>
-                <a href="#"
+                <a href="/"
                   class="block px-4 py-2 hover:bg-lime-100 hover:bg-lime-600 hover:text-white">Home</a>
               </li>
               <li>
-                <a href="#"
+                <a href="/profile"
                   class="block px-4 py-2 hover:bg-lime-100 hover:bg-lime-600 hover:text-white">Profile</a>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 hover:bg-lime-100 hover:bg-lime-600 hover:text-white">Sign
-                  out</a>
+                {{#if logged_in}}
+                  <a id="logout" href="#" class="block px-4 py-2 hover:bg-lime-100 hover:bg-lime-600 hover:text-white">Sign out</a>
+                {{else}}
+                  <a href="/login" class="block px-4 py-2 hover:bg-lime-100 hover:bg-lime-600 hover:text-white">Sign in</a>
+                {{/if}}
               </li>
             </ul>
           </div>

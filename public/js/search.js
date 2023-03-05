@@ -1,3 +1,5 @@
+//const searchEl = document.querySelector('#search-bar');
+
 const searchQuery = async (event) => {
     event.preventDefault();
 
@@ -7,7 +9,4 @@ const searchQuery = async (event) => {
 };
 
 
-
-
-const searchEl = document.querySelector('#search-bar');
-searchEl.addEventListener('submit', searchQuery);
+//searchEl.addEventListener('submit', searchQuery);
