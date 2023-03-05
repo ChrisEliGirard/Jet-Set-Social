@@ -10,12 +10,13 @@ router.get('/', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Trips, 
         include: [
-          {model: Comments, attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
+          {model: Comments, include: [{model: Users}], attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
           {model: Images}], 
         exclude: ['tagged'],
       }],
     });
     const user = userData.get({ plain: true });
+    console.log(user.trips[0].comments);
     res.render('profile', {
       ...user,
       logged_in: true,
@@ -36,7 +37,7 @@ router.get('/:id', async (req, res) => {
                 attributes: { exclude: ['password'] },
                 include: [{ model: Trips, 
                   include: [
-                    {model: Comments, attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
+                    {model: Comments, include: [{model: Users}], attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
                     {model: Images}], 
                   exclude: ['taggeds'],
                 }],
