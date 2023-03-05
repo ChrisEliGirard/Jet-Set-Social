@@ -27,7 +27,7 @@
           <p class="pl-2 pt-2">{{trip.description}}</p>
           <div>
             <p class="pl-2 pt-2">{{trip.comments.[0].comment}}</p>
-            <p class="text-right">{{trip.comments.[0].user_id}}</p>
+            <p class="text-right">{{trip.comments.[0].user.username}}</p>
           </div>
         </div>
       </div>
@@ -37,5 +37,5 @@
   <div id="overlay"></div>
 </div>
 
-<script src="./js/tripCreateForm.js"></script>
-<script src="./js/profile.js"></script>
+<script src="/public/js/tripCreateForm.js"></script>
+<script src="/public/js/profile.js"></script>
