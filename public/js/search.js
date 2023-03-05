@@ -3,10 +3,11 @@ const searchQuery = async (event) => {
 
     //Collect Search Inquiry from the searchbar
     const searchRaw = document.querySelector('#search-bar').value.trim().toLowerCase();
-    document.location.replace(`/search/${searchRaw}`);
+    document.location.replace('/search/'+searchRaw);
 };
 
 
 
 
-document.querySelector('#search-bar').addEventListener('submit', searchQuery);
+const searchEl = document.querySelector('#search-bar');
+searchEl.addEventListener('submit', searchQuery);
