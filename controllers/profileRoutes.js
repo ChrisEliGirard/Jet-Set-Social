@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
                   include: [
                     {model: Comments, include: [{model: Users}], attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
                     {model: Images}], 
-                  exclude: ['taggeds'],
+                  exclude: ['tagged'],
                 }],
             });
         
