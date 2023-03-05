@@ -1,66 +1,32 @@
-
-{{!-- I don't know how to properly link the stylesheet or javascript file --}}
  
-
-
-    <div class="container">
-        <div class="signin-signup">
-            <!-- - Sign In - -->
-            <form action="" class="sign-in-form" id="login-form">
-                <h2 class="title">Sign in</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" id="user-login" placeholder="Username/email">
+<div class="flex justify-center items-center h-screen">
+        <div class="w-96 p-6 shadow-lg bg-gradient-to-r from-green-800 via-green-600 to-lime-600 rounded-md">
+            <h1 class="text-3xl block text-center font-semibold text-lime-400"><i class="fa-solid fa-user"></i> Login</h1>
+            <hr class="mt-3">
+            <!-- Username -->
+            <div class="mt-3">
+                <label for="username" class="block text-base mb-2 text-lime-400">Username</label>
+                <input type="text" id="username" class="border rounded-md w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-lime-600" placeholder="Enter Username..." />
+            </div>
+            <!-- Password -->
+            <div class="mt-3">
+                <label for="password" class="block text-base mb-2 text-lime-400">Password</label>
+                <input type="password" id="password" class="border rounded-md w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-lime-600" placeholder="Enter Password..." />
+            </div>
+            <div class="mt-3 flex justify-between items-center">
+                <div>
+                    <input type="checkbox">
+                    <label class="text-yellow-400">Remember Me</label>
                 </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password-login" placeholder="Password">
-                </div>
-                <input type="submit" value="Login" class="btn">
-                
-                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
-            </form>
-            <!-- - Sign Up - -->
-            <form action="" class="sign-up-form" id="signup-form">
-                <h2 class="title">Sign up</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
-                </div>
-                <input type="submit" value="Sign Up" class="btn">
-            
-                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
-            </form>
-        </div>
-        <!-- - The sign in and sign up panels - -->
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Jet Set Member</h3>
-                    <p>Welcome back! We missed you!</p>
-                    <button class="btn" id="sign-in-btn">Sign in</button>
-                    <div>
-                        <img src="/public/Images/Adventure_is_out_there.svg" alt="image">
-                    </div>
+               
+                <div>
+                    <a href="#" class="text- text-yellow-400 font-semibold">Forgot Password?</a>
                 </div>
             </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>New Jet Set Member</h3>
-                    <p>Welcome! The adventure awaits!</p>
-                    <button class="btn" id="sign-up-btn">Sign up</button>
-                    <div>
-                        <img src="/public/Images/Create_memories.svg" alt="image">
-                    </div>
-                </div>
+            <!-- Login Button -->
+            <div class="mt-5">
+                <button type="submit" class="border-2 border-lime-400 bg-lime-400 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-lime-400 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
+                <p class="text-xs text-yellow-400 my-2">Don't have a account? <a href="#" class="text-yellow-400">Sign up</a></p>
             </div>
         </div>
     </div>
