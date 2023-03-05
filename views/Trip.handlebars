@@ -1,1 +1,35 @@
 <!-- Trip View Page -->
+<!-- Body Container -->
+<div class="w-full h-auto py-16 px-2 bg-gray-400 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
+    <div class=" container px-2">
+        <!-- Trip Image Carousel Div -->
+        <section aria-label="Newest photos">
+            <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8592;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8594;</button>
+            <ul data-slides>
+                <li class="slide" data-active>
+                <img src="/public/Images/yana-marudova-I9irKyriQAc-unsplash.jpg" alt="Travel IMG#1">
+                </li>
+                <li class="slide">
+                <img src="/public/Images/tom-podmore-KS1BOYSzjh0-unsplash.jpg" alt="Travel IMG#2">
+                </li>
+                <li class="slide">
+                <img src="/public/Images/tom-podmore-t_TvL0ZLVyo-unsplash.jpg" alt="Travel IMG#3">
+                </li>
+            </ul>
+            </div>
+        </section>
+        <section id="trip-details" class="container columns-1 sm:columns-2">
+            <div id="trip-about-card" class="sm:float-left">
+                <h3>{{trip.description}}</h3>
+                <p>{{<trip.date_created}}</p>
+            </div>
+            <div id="tagged-card" class="sm:float-right">
+                {{#each trip.users as |user|}}
+                <h4>{{user.name}}</h4>
+            </div>
+        </section>
+        <section id="comment-card" class="container"></section>
+    </div>
+</div>
