@@ -1514,6 +1514,11 @@ input:checked + .toggle-bg {
   background-color: rgb(163 230 53 / var(--tw-bg-opacity));
 }
 
+.bg-lime-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
+}
+
 .bg-lime-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(101 163 13 / var(--tw-bg-opacity));
@@ -2307,6 +2312,16 @@ image {
   background-color: rgb(236 252 203 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-lime-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(101 163 13 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-lime-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(77 124 15 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-lime-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(63 98 18 / var(--tw-bg-opacity));
@@ -2344,6 +2359,11 @@ image {
 .hover\:text-lime-400:hover {
   --tw-text-opacity: 1;
   color: rgb(163 230 53 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -2393,6 +2413,11 @@ image {
   --tw-ring-color: rgb(190 242 100 / var(--tw-ring-opacity));
 }
 
+.focus\:ring-lime-800:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(63 98 18 / var(--tw-ring-opacity));
+}
+
 .dark .dark\:border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
@@ -2436,17 +2461,8 @@ image {
   background-color: rgb(31 41 55 / 0.5);
 }
 
-.dark .dark\:bg-lime-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
-}
-
 .dark .dark\:bg-opacity-80 {
   --tw-bg-opacity: 0.8;
-}
-
-.dark .dark\:bg-gradient-to-b {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
 .dark .dark\:text-blue-500 {
@@ -2479,16 +2495,6 @@ image {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:hover\:bg-lime-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(101 163 13 / var(--tw-bg-opacity));
-}
-
-.dark .dark\:hover\:bg-lime-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(77 124 15 / var(--tw-bg-opacity));
-}
-
 .dark .dark\:hover\:text-blue-500:hover {
   --tw-text-opacity: 1;
   color: rgb(63 131 248 / var(--tw-text-opacity));
@@ -2502,11 +2508,6 @@ image {
 .dark .dark\:hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.dark .dark\:focus\:ring-lime-800:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(63 98 18 / var(--tw-ring-opacity));
 }
 
 @media (min-width: 640px) {
