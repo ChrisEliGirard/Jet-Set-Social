@@ -1182,6 +1182,10 @@ input:checked + .toggle-bg {
   height: auto;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-max {
   height: -moz-max-content;
   height: max-content;
@@ -1231,20 +1235,8 @@ input:checked + .toggle-bg {
   flex-shrink: 1;
 }
 
-.flex-grow {
-  flex-grow: 1;
-}
-
-.basis-1 {
-  flex-basis: 0.25rem;
-}
-
 .basis-1\/3 {
   flex-basis: 33.333333%;
-}
-
-.basis-1\/4 {
-  flex-basis: 25%;
 }
 
 .-translate-x-full {
@@ -1329,6 +1321,10 @@ input:checked + .toggle-bg {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .content-center {
@@ -1517,11 +1513,6 @@ input:checked + .toggle-bg {
 .bg-lime-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(132 204 22 / var(--tw-bg-opacity));
-}
-
-.bg-lime-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(101 163 13 / var(--tw-bg-opacity));
 }
 
 .bg-lime-700 {
@@ -1956,6 +1947,16 @@ header, .project:not(:last-child) {
   position: relative;
   margin-left: 10%;
   margin-top: 30px;
+  border:10px solid #365314;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.carousel-width {
+  width: 80vw;
+  height:auto;
+  position: relative;
+  margin-left: 10%;
   border:10px solid #365314;
   border-radius: 6px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
@@ -2525,11 +2526,6 @@ image {
     width: 5rem;
   }
 
-  .sm\:columns-1 {
-    -moz-columns: 1;
-         columns: 1;
-  }
-
   .sm\:columns-2 {
     -moz-columns: 2;
          columns: 2;
@@ -2576,10 +2572,6 @@ image {
 @media (min-width: 768px) {
   .md\:w-40 {
     width: 10rem;
-  }
-
-  .md\:flex-row {
-    flex-direction: row;
   }
 }
 

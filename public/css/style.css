@@ -39,6 +39,16 @@ header, .project:not(:last-child) {
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
+.carousel-width {
+  width: 80vw;
+  height:auto;
+  position: relative;
+  margin-left: 10%;
+  border:10px solid #365314;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
 .slide {
   position: absolute;
   inset: 0;

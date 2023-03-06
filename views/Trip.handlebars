@@ -1,7 +1,7 @@
 <!-- Trip View Page -->
 <!-- Body Container -->
-<div class="w-full h-auto py-16 px-2 bg-gray-400 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
-    <div class=" container columns-1 flex flex-grow px-2">
+<div class="w-full h-full py-16 px-2 bg-gray-400 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
+    <div class="px-2">
         <!-- Trip Image Carousel Div -->
         <section aria-label="Newest photos">
             <div class="carousel" data-carousel>
@@ -20,8 +20,8 @@
             </ul>
             </div>
         </section>
-        <section id="trip-details" class="container carousel-width columns-1 sm:columns-2 bg-white">
-            <div id="trip-about-card" class="sm:float-left sm:columns-1">
+        <section id="trip-details" class="carousel-width columns-1 sm:columns-2 bg-white">
+            <div id="trip-about-card" class="sm:float-left">
                 <div>
                     <h3>About The Trip:</h3>
                     <p>{{description}}</p>
@@ -31,7 +31,7 @@
                     <p>{{date_created}}</p>
                 </div>
             </div>
-            <div id="tagged-card" class="sm:float-right sm:columns-1">
+            <div id="tagged-card" class="sm:float-right">
                 {{#each taggeds}}
                 <h4>{{user.username}}</h4>
                 {{/each}}
