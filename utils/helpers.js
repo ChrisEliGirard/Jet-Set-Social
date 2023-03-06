@@ -19,4 +19,7 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
+  getImage: (images) => {
+    return images[Math.floor(Math.random() * images.length)].image;
+  }
 };

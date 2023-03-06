@@ -29,6 +29,18 @@
               <i class="fa-solid fa-magnifying-glass-location"></i>
           </form>
         </div>
+
+        {{#if logged_in}}
+            <div class="break-after-column w-20 pb-2 sm:pb-0">
+              <a href="/profile">
+                <img src="{{profile_url}}"
+                class="rounded-full shadow-lg pl-4 pr-2 sm:w-20 md:w-40 lg:w-40"
+                alt="{{profile_alt}}"
+                />
+                <h2 class="text-white text-font-bold">{{full_name}}</h2>
+              </a>           
+            </div>
+        {{/if}}
         <!-- Dropdown menu -->
         <div>
           <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" 

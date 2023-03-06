@@ -93,23 +93,4 @@ Comments.belongsTo(Locations, {
   foreignKey: 'location_id'
 });
 
-// Tagged has a many to many relations with Comments through Trips
-Tagged.belongsToMany(Comments, {
-  through: {
-    model: Trips,
-    unique: false
-  },
-  as: 'TaggedUsers'
-});
-
-// Comments has a many to many relations with Tagged through Trips
-Comments.belongsToMany(Tagged, {
-  through: {
-    model: Trips,
-    unique: false
-  },
-  as: 'TaggedComments',
-});
-
-
 module.exports = { Users, Trips, Tagged, Images, Locations, Comments };
