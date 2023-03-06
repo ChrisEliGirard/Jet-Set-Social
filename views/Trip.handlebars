@@ -53,7 +53,7 @@
                                 alt="{{user.image_name}}"
                             />
                         </div>
-                        <button class="flex flex-auto self-center justify-center py-2 text-center btn rounded-md border-2 border-gray-400 bg-gradient-to-r from-orange-300 to-brown-600">{{user.username}}</button>
+                        <button class="flex flex-auto self-center justify-center py-2 text-center btn rounded-md border-2 border-gray-400 bg-gradient-to-r from-orange-300 to-brown-600">{{user.name}}</button>
                     </a>
                     {{/each}}
                 </div>
@@ -65,7 +65,7 @@
                     <h2 class="py-2 text-center font-bold border-b-4 border-gray-400 bg-brown-700">Comments</h2>
                     {{#each comments}}
                         <div class="mb-3 m-3 text-center border-gray-600 border-2 rounded-md">
-                            <h3 class="flex font-bold bg-lime-600 border-b-2 rounded-t-md indent-1">{{user.username}} <a class="ml-1 mt-1 text-xs font-semibold">on: {{format_date date_created}}</a></h3>
+                            <h3 class="flex font-bold bg-lime-600 border-b-2 rounded-t-md indent-1">{{user.name}} <a class="ml-1 mt-1 text-xs font-semibold">on: {{format_date date_created}}</a></h3>
                             <p class="font-semibold rounded-b-md bg-white">{{comment}}</p>
                         </div>
                     {{/each}}
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="">
-                            <button class="btn btn-primary btn-block py-3" type="submit">
+                            <button id="newComment" data-trip="{{id}}" class="btn btn-primary btn-block py-3" type="submit">
                                 Submit
                             </button>
                         </div>
@@ -93,3 +93,5 @@
         </section>
     </div>
 </div>
+
+<script src="/public/js/trips.js"></script>
