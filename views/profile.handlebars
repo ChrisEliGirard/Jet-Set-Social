@@ -1,72 +1,72 @@
 <!--Main Content-->
 <!-- Main Body Container -->
-<div class="w-full h-auto py-16 px-2 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
+
+<div
+  class="w-full h-auto py-16 px-2 sm:shadow-sm">
   <div class="flex-block sm:flex columns-1 sm:columns-2 px-2">
     <!-- Profile Image Div -->
-    <div id="avatar" class="break-after-column w-20 pb-2 sm:pb-0">
-      <img
-        src="{{profile_image}}"
-        class="rounded-full shadow-lg pl-4 pr-2 sm:w-20 md:w-40 lg:w-40"
-        alt="{{image_name}}"
-      />
-      <h2 class="text-white text-font-bold">{{name}}</h2>
+    <div id="avatar" class="break-after-column w-20 pb-0 sm:pb-0 mr-2">
+      <img src="{{profile_image}}" class="rounded-full shadow-lg sm:w-20 md:w-40 lg:w-40 border-4 border-green-900"
+        alt="{{image_name}}" />
+      <h2 class="text-lime-500 text-font-bold">{{name}}</h2>
     </div>
     <!-- Container for All the Trip Cards -->
-    <div id="trips-container" class="container space-y-3">
-      {{#if trips.length}}
+    <div>
+      <div id="trips-container" class="container space-y-3 border-4 border-green-900 bg-gradient-to-t from-lime-100 via-stone-200 to-stone-200 rounded">
+        {{#if trips.length}}
         {{#each trips as |trip|}}
-          <div id="trip-card" class="container flex-block sm:flex sm:coloumns-2 mx-auto content-center h-max bg-white border-green-500 border-4 rounded-xl">
-            <figure id="trip-photo" class="sm:float-left sm:w-1/2 sm:border-r-2">
+        
+        <div id="trip-card"
+          class="container flex-block sm:flex sm:col-2 mx-auto content-center h-max border-green-900">
+          <figure id="trip-photo" class="sm:float-left sm:w-1/2">
+          
             <a href="/trips/{{trip.id}}">
-              <img 
-                src="{{getImage trip.images}}"
-                class="flex-shrink rounded-xl sm:rounded-none sm:rounded-l-xl"
-                alt="Trip Photo of {{trip.name}}"
-              />
+              <img src="{{getImage trip.images}}" class="flex-shrink sm:rounded-none"
+                alt="Trip Photo of {{trip.name}}" />
             </a>
-              
-            </figure>
-            <div id="trip-details" class="sm:float-right sm:w-1/2 px-1 bg-white rounded-xl sm:rounded-r-xl">
-            <a href="/trips/{{trip.id}}"><h2 class="py-2 text-center font-bold border-b-2">{{trip.name}}</h2></a>  
-              <p class="pl-2 pt-2">{{trip.description}}</p>
-              {{#if trip.taggeds.length}}
-                <div>
-                  <p class="pl-2 pt-2">Tagged friends on this trip were:</p>
-                  {{#each trip.taggeds as |friend|}}
-                    <div id="avatar" class="break-after-column w-20 pb-2 sm:pb-0">
-                      <a href="/profile/{{friend.user_id}}">
-                        <img
-                        src="{{friend.user.profile_image}}"
-                        class="rounded-full shadow-lg pl-4 pr-2 sm:w-20 md:w-40 lg:w-40"
-                        alt="{{friend.user.image_name}}"
-                        />
-                        <h2 class="text-black text-font-bold">{{friend.user.name}}</h2>
-                      </a>
-                      
-                    </div>
-                  {{/each}}
-                </div>
-              {{/if}}
-            </div>
-          </div>
-        {{/each}}
-      {{/if}}
 
-      {{#if taggeds.length}}
-          <p class="pl-2 pt-2">You can view my trips with friends here:</p>
-          {{#each taggeds as |member|}}
-              <div id="avatar" class="break-after-column w-20 pb-2 sm:pb-0">
-                <a href="/trips/{{member.trip_id}}">
-                  <img
-                  src="{{getImage member.trip.images}}"
-                  class="rounded-full shadow-lg pl-4 pr-2 sm:w-20 md:w-40 lg:w-40"
-                  alt="Trip Photo of {{member.trip.name}}"
-                  />
-                  <h2 class="text-black text-font-bold">{{member.trip.name}}</h2>
-                </a>                     
+          </figure>
+          <div id="trip-details"
+            class="sm:float-right sm:w-1/2 border-l-4 border-b-4 border-green-900">
+            <a href="/trips/{{trip.id}}">
+              <h2 class="mx-0 py-2 text-center text-4xl font-bold border-b-4 border-green-900 bg-gradient-to-r from-brown-800 via-brown-500 to-brown-800">{{trip.name}}</h2>
+            </a>
+            <p class="pl-2 pt-2">{{trip.description}}</p>
+            {{#if trip.taggeds.length}}
+            <div>
+              <p class="pl-2 pt-2 text-lg text-lime-500 underline">Tagged friends on this trip were:</p>
+              {{#each trip.taggeds as |friend|}}
+              <div id="avatar" class="break-after-column w-40 pb-0 sm:pb-0 ml-2">
+                <a href="/profile/{{friend.user_id}}">
+                  <img src="{{friend.user.profile_image}}"
+                    class="rounded-full shadow-lg sm:w-20 md:w-30 lg:w-30 border-2 border-green-900 mt-2"
+                    alt="{{friend.user.image_name}}" />
+                  <h2 class="text-black text-font-bold">{{friend.user.name}}</h2>
+                </a>
+
               </div>
-          {{/each}}
+              {{/each}}
+            </div>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
         {{/if}}
+
+        {{#if taggeds.length}}
+        <p class="pl-2 pt-2 text-lg text-lime-500 underline">You can view my trips with friends here:</p>
+        {{#each taggeds as |member|}}
+        <div id="avatar" class="break-after-column w-50 ml-2">
+          <a href="/trips/{{member.trip_id}}">
+            <img src="{{getImage member.trip.images}}"
+              class="rounded shadow-lg sm:w-20 md:w-30 lg:w-30 border-2 border-green-900"
+              alt="Trip Photo of {{member.trip.name}}" />
+            <h2 class="text-black text-font-bold mb-2">{{member.trip.name}}</h2>
+          </a>
+        </div>
+        {{/each}}
+        {{/if}}
+      </div>
     </div>
   </div>
   <div id="overlay"></div>

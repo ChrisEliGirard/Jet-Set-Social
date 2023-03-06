@@ -20,26 +20,11 @@ router.get('/:id', async (req, res) => {
                 {model: Images, right: true}
             ],
         });
+
         trippie = tripData.map((trips) => trips.get({plain: true}));
         trip = trippie[0];
         console.log(trip);
-        //const trip = tripData.get({ plain: true });
-        // const taggedUsersArray = [...trip.taggeds] //.map((user) => user_id);
-        // const taggedUsers = taggedUsersArray.map((id) => id.user_id)
-        // let editor = false;
-        // let owner = false;
-        // // To render appropriate form functions for the user
-        // if (taggedUsers.includes(req.session.user_id)) {
-        //     editor = true;
-        //     owner = false;
-        // } else if (trip.user_id === req.session.user_id) {
-        //     editor = false;
-        //     owner = true;
-        // } else {
-        //     editor = false;
-        //     owner = false;
-        // };
-        // console.log(trip);
+
         res.render('Trip', {
             ...trip,
             // owner,
