@@ -1,25 +1,45 @@
 const router = require('express').Router();
-const { Trips, Users, Images, Comments} = require('../models');
+const { Trips, Users, Images, Comments, Tagged, Locations } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Use withAuth middleware to prevent access to route
 router.get('/', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
     const userData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Trips, 
-        include: [
-          {model: Comments, include: [{model: Users}], attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
-          {model: Images}], 
-        exclude: ['tagged'],
-      }],
+      include: [
+        {
+          model: Trips,
+          include: [
+            {
+              model: Comments, include: [{ model: Users, attributes: { exclude: ['password', 'email', 'trip_id'] }, order: [['date_created', 'DESC']] },
+              { model: Locations }],
+            },
+            { model: Images, exclude: ['user_id', 'trip_id'] },
+            {
+              model: Tagged, include: [{ model: Users, attributes: { exclude: ['password', 'email', 'trip'] } }]
+            },
+          ]
+        },
+        {
+          model: Tagged,
+          exclude: ['user_id'],
+          include: [{
+            model: Trips,
+            include: [{ model: Images, attributes: { exclude: ['user_id', 'trip_id'] } }]
+          }]
+        }],
     });
+
     const user = userData.get({ plain: true });
+
     res.render('profile', {
       ...user,
       logged_in: true,
       owner: true,
+      full_name: req.session.full_name,
+      profile_url: req.session.profile_url,
+      profile_alt: req.session.profile_alt
     });
   } catch (err) {res.status(500).json(err)};
 });
@@ -32,21 +52,40 @@ router.get('/:id', async (req, res) => {
             window.replace('/');
         } else {
             // Find the User based on the req params whether user or frontend initiated
-            const userData = await Users.findByPk(req.params.id, {
-                attributes: { exclude: ['password'] },
-                include: [{ model: Trips, 
-                  include: [
-                    {model: Comments, include: [{model: Users}], attributes: {exclude: ['trip_id']}, order: [['date_created', 'DESC']]}, 
-                    {model: Images}], 
-                  exclude: ['tagged'],
-                }],
-            });
-        
+          const userData = await Users.findByPk(req.params.id, {
+            attributes: { exclude: ['password'] },
+            include: [
+              {
+                model: Trips,
+                include: [
+                  {
+                    model: Comments, include: [{ model: Users, attributes: { exclude: ['password', 'email', 'trip_id'] }, order: [['date_created', 'DESC']] },
+                    { model: Locations }],
+                  },
+                  { model: Images, exclude: ['user_id', 'trip_id'] },
+                  {
+                    model: Tagged, include: [{ model: Users, attributes: { exclude: ['password', 'email', 'trip'] } }]
+                  },
+                ]
+              },
+              {
+                model: Tagged,
+                exclude: ['user_id'],
+                include: [{
+                  model: Trips,
+                  include: [{ model: Images, attributes: { exclude: ['user_id', 'trip_id'] } }]
+                }]
+              }],
+          });
+
             const user = userData.get({ plain: true });
             res.render('profile', {
                 ...user,
                 logged_in: req.session.logged_in,
-                owner: false,
+              owner: false,
+              full_name: req.session.full_name,
+              profile_url: req.session.profile_url,
+              profile_alt: req.session.profile_alt
             });
         }
     } catch (err) {res.status(500).json(err), console.log(err)};
