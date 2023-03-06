@@ -23,6 +23,7 @@ router.get('/:id', async (req, res) => {
         const trip = tripData.get({plain: true});
         
         console.log(trip);
+        console.log(trip.taggeds[0].user)
         res.render('Trip', {
             ...trip,
             logged_in: req.session.logged_in 
