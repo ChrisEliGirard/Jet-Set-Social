@@ -4,31 +4,20 @@
         <!-- "Search Results Section Container" -->
         <div class="grid grid-cols-3 gap-20 px-16 opacity-100">
           <!-- Search Result Card #1 -->
-            {{#each user}}
-            <div class="flex flex-col justify-center hover:scale-110 p-5 bg-gradient-to-r from-green-800 via-green-600 to-lime-600 rounded cursor-pointer">
-              <h3  href="" class="resultsTitle text-xl text-white text-center py-4">{{name}}</h3>
-            </div>
-            {{/each}}
-          <!-- Search Result Card #2 -->
-          <div class="flex flex-col justify-center hover:scale-110 hover:bg-yellow-500 p-5 bg-lime-600 rounded cursor-pointer">
-            <h3  class="resultsTitle text-xl text-white text-center py-4">Search Result</h3>
-          </div>
-          <!-- Search Result Card #3 -->
+          {{#each user}}
           <div class="flex flex-col justify-center hover:scale-110 p-5 bg-gradient-to-r from-green-800 via-green-600 to-lime-600 rounded cursor-pointer">
-            <h3  class="resultsTitle text-xl text-white text-center py-4">Search Result</h3>
+            <a href="/profile/{{id}}">
+              <h3 class="resultsTitle text-xl text-white text-center py-4">{{name}}</h3>
+            </a>
           </div>
-          <!-- Search Result Card #4 -->
-          <div class="flex flex-col justify-center hover:scale-110 hover:bg-yellow-500 p-5 bg-lime-600 rounded cursor-pointer">
-            <h3  class="resultsTitle text-xl text-white text-center py-4">Search Result</h3>
-          </div>
-          <!-- Search Result Card #5 -->
+          {{/each}}
+          {{#each trip}}
           <div class="flex flex-col justify-center hover:scale-110 p-5 bg-gradient-to-r from-green-800 via-green-600 to-lime-600 rounded cursor-pointer">
-            <h3  class="resultsTitle text-xl text-white text-center py-4">Search Result</h3>
+            <a href="/trips/{{id}}">
+              <h3 class="resultsTitle text-xl text-white text-center py-4">{{name}}</h3>
+            </a>
           </div>
-          <!-- Search Result Card #6 -->
-          <div class="flex flex-col justify-center hover:scale-110 hover:bg-yellow-500 p-5 bg-lime-600 rounded cursor-pointer">
-            <h3  class="resultsTitle text-xl text-white text-center py-4">Search Result</h3>
-          </div>
+          {{/each}}
         </div>
   
       </main>

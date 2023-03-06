@@ -1,5 +1,3 @@
-//const searchEl = document.querySelector('#search-bar');
-
 const searchQuery = async (event) => {
     event.preventDefault();
 
@@ -8,5 +6,5 @@ const searchQuery = async (event) => {
     document.location.replace('/search/'+searchRaw);
 };
 
-
-//searchEl.addEventListener('submit', searchQuery);
+const searchEl = document.querySelector('#search-form');
+searchEl.addEventListener('submit', searchQuery);
