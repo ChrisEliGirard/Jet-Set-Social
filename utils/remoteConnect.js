@@ -68,7 +68,6 @@ const saveFile = async (aFile) => {
 		},
 	});
 
-	console.log(`Uploaded file ${data.name} ${data.id}`);
 	await driveClient.permissions.create({ fileId: data.id, resource: resource });
 
 	return { filename: data.name, file_id: data.id };

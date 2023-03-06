@@ -10,16 +10,15 @@ router.post('/', upload.any(), async (req, res) => {
   try {
     // files is a standard variable that comes in the request.
     const { body, files } = req;
-
     let result = await remoteConnect.saveFiles(files);
 
     // Assuming the body uses our naming conventions
     let newUser = {
-      name: body.name,
+      name: `${body.firstName} ${body.lastName}`,
       username: body.username,
       email: body.email,
-      profile_image: `https://drive.google.com/uc?export=view&id=${result.file_id}`,  // just use it as is
-      image_name: result.filename,    // Use this for alt description in img tag
+      profile_image: `https://drive.google.com/uc?export=view&id=${result.file_id}`,
+      image_name: result.filename,
       password: body.password,
     };
 

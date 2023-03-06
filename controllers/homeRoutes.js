@@ -46,7 +46,10 @@ router.get('/search/:search', async (req, res) => {
     });
 
     const searchTripData = await Trips.findAll({
-      where:{name: '%' + `${req.params.name}` + '%'},
+      where:{
+        [Op.or]: [
+          {name: {[Op.like]: '%' + `${req.params.search}` + '%'}},
+      ]},
     });
 
     if(!searchUserData && searchTripData) {return {message: "No Users or Trips found with this Name"}}
@@ -54,6 +57,7 @@ router.get('/search/:search', async (req, res) => {
     const user = searchUserData.map((users) => users.get({ plain: true }));
     const trip = searchTripData.map((trips) => trips.get({ plain: true }));
     console.log(user);
+    console.log(trip);
     
     res.render('search', {
       user,
@@ -73,6 +77,19 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login', {
+    loginRender: true
+  });
+});
+
+// Register new users
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('registration', {
     loginRender: true
   });
 });

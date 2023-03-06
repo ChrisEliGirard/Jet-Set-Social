@@ -6,8 +6,5 @@ const searchQuery = async (event) => {
     document.location.replace('/search/'+searchRaw);
 };
 
-
-
-
-const searchEl = document.querySelector('#search-bar');
+const searchEl = document.querySelector('#search-form');
 searchEl.addEventListener('submit', searchQuery);
