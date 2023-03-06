@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
@@ -44,6 +43,9 @@ header, .project:not(:last-child) {
   height:auto;
   position: relative;
   margin-left: 10%;
+}
+
+.carousel-border {
   border:10px solid #365314;
   border-radius: 6px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
