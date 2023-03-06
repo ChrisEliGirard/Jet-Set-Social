@@ -1,6 +1,9 @@
 const router = require('express').Router();
-const { Trips } = require('../../models');
+const { Trips, Images, Tagged } = require('../../models');
 const withAuth = require('../../utils/auth');
+const remoteConnect = require('../../utils/remoteConnect');
+const multer = require('multer');
+const upload = multer();
 
 // GET all Trips
 router.get('/', async (req, res) => {
@@ -24,15 +27,40 @@ router.get('/:id', async (req, res) => {
 })
 
 // CREATE a new Trip
-router.post('/', withAuth, async (req, res) => {
+router.post('/', upload.any(), async (req, res) => {
   try {
-    const newTrip = await Trips.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    // files is a standard variable that comes in the request.
+    const { body, files } = req;
+    let result = await remoteConnect.saveFiles(files); 
 
+    // Assuming the body uses our naming conventions
+    let newTrip = {
+      name: `${body.tripName}`,
+      description: `${body.tripDescription}`,
+      user_id: `${req.session.user_id}`
+    }
+
+    const tripData = await Trips.create(newTrip);
+    let tags =
+      {
+        user_id: 4,
+        trip_id: tripData.id
+      };
+    const tagData = await Tagged.create(tags)
+    let images = []
+    for (let i = 0; i < result.length; i++) {
+      let imageData = {
+        image: `https://drive.google.com/uc?export=view&id=${result[i].file_id}`,
+        image_name: result[i].filename,
+        user_id: req.session.user_id,
+        trip_id: tripData.id,
+      }
+      let image = await Images.create(imageData);
+      images.push(image)
+    }
+    console.log(newTrip);
     res.status(200).json(newTrip);
-  } catch (err) {res.status(400).json(err)};
+  } catch (err) {res.status(400).json(err), console.log(err)};
 });
 
 // UPDATE a Trip

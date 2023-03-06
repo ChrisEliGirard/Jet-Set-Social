@@ -1,6 +1,6 @@
 <!--Main Content-->
 <!-- Main Body Container -->
-<div class="w-full h-auto py-16 px-2 bg-gray-400 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
+<div class="w-full h-auto py-16 px-2 border-b-2 border-r-2 rounded border-gray-300 sm:rounded-lg sm:shadow-sm">
   <div class="flex-block sm:flex columns-1 sm:columns-2 px-2">
     <!-- Profile Image Div -->
     <div id="avatar" class="break-after-column w-20 pb-2 sm:pb-0">
@@ -15,7 +15,7 @@
     <div id="trips-container" class="container space-y-3">
       {{#if trips.length}}
         {{#each trips as |trip|}}
-          <div id="trip-card" class="container flex-block sm:flex sm:coloumns-2 mx-auto content-center h-max bg-white border-gray-200 border-2 rounded-xl">
+          <div id="trip-card" class="container flex-block sm:flex sm:coloumns-2 mx-auto content-center h-max bg-white border-green-500 border-4 rounded-xl">
             <figure id="trip-photo" class="sm:float-left sm:w-1/2 sm:border-r-2">
             <a href="/trips/{{trip.id}}">
               <img 
@@ -72,5 +72,4 @@
   <div id="overlay"></div>
 </div>
 
-{{!-- <script src="/public/js/tripCreateForm.js"></script> --}}
 <script src="/public/js/profile.js"></script>
