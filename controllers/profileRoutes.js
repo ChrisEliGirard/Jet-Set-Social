@@ -16,7 +16,6 @@ router.get('/', withAuth, async (req, res) => {
       }],
     });
     const user = userData.get({ plain: true });
-    console.log(user.trips[0].comments);
     res.render('profile', {
       ...user,
       logged_in: true,
@@ -44,8 +43,6 @@ router.get('/:id', async (req, res) => {
             });
         
             const user = userData.get({ plain: true });
-            console.log(user);
-            console.log(user.trips[0].comments)
             res.render('profile', {
                 ...user,
                 logged_in: req.session.logged_in,
