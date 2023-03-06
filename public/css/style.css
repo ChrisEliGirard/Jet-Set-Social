@@ -2,30 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+* {
+  font-family: 'Shantell Sans', cursive;
 }
 
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
-}
-
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
 /* Start of the Homepage Styles*/
 .carousel {
   width: 80vw;
@@ -33,20 +13,20 @@ header, .project:not(:last-child) {
   position: relative;
   margin-left: 10%;
   margin-top: 30px;
-  border:10px solid #365314;
+  border: 10px solid #365314;
   border-radius: 6px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .carousel-width {
   width: 80vw;
-  height:auto;
+  height: auto;
   position: relative;
   margin-left: 10%;
 }
 
 .carousel-border {
-  border:10px solid #365314;
+  border: 10px solid #365314;
   border-radius: 6px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
@@ -89,7 +69,7 @@ header, .project:not(:last-child) {
 }
 
 .carousel-button:hover {
-  color:  rgba(45, 231, 12, 0.493);
+  color: rgba(45, 231, 12, 0.493);
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -315,54 +295,55 @@ image {
   pointer-events: all;
 }
 
+
 /*Responsive*/
 
 @media (max-width:779px) {
   .container {
-      width: 100vw;
-      height: 100vh;
+    width: 100vw;
+    height: 100vh;
   }
 }
 
 @media (max-width:635px) {
   .container::before {
-      display: none;
+    display: none;
   }
 
   form {
-      width: 80%;
+    width: 80%;
   }
 
   form.sign-up-form {
-      display: none;
+    display: none;
   }
 
   .container.sign-up-mode2 form.sign-up-form {
-      display: flex;
-      opacity: 1;
+    display: flex;
+    opacity: 1;
   }
 
   .container.sign-up-mode2 form.sign-in-form {
-      display: flex;
+    display: flex;
   }
 
   .panels-container {
-      display: none;
+    display: none;
   }
 
   .account-text {
-      display: initial;
-      margin-top: 30px;
+    display: initial;
+    margin-top: 30px;
   }
 
   .login-btn {
     font-size: 20px;
-  }  
+  }
 
 }
 
 @media (max-width:320px) {
   form {
-      width: 90%;
+    width: 90%;
   }
 }
