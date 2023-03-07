@@ -2,27 +2,24 @@ const router = require('express').Router();
 const { Trips, Users, Images, Comments, Tagged} = require('../models');
 const withAuth = require('../utils/auth');
 
-// Use withAuth middleware to prevent access to route
-
-// Route to view another Trip Page
+// Route to view a Trip Page
 router.get('/:id', async (req, res) => {
     try {
-        // If the Users id matches the requested id than the User is redirected to their editable profile
-        // Find the User based on the req params whether user or frontend initiated
-        //const tripData = await Trips.findByPk(req.params.id, {
-        const tripData = await Trips.findAll({
-            where: {id: req.params.id},
+        // Find the Trip based on the req params whether user or frontend initiated
+        const tripData = await Trips.findByPk(req.params.id, {
             include: [ 
                 {model: Users, attributes: {exclude: ['password']}},
                 {model: Tagged, right: true, 
-                    include: {model: Users, attributes: {exclude: ['password']}}
+                    include: {model: Users, attributes: {exclude: ['password']}},
                 },
-                {model: Images, right: true}
+                {model: Images, right: true},
+                {model: Comments, required: false,
+                    include: {model: Users, attributes: {exclude: ['password']}},
+                },
             ],
         });
 
-        trippie = tripData.map((trips) => trips.get({plain: true}));
-        trip = trippie[0];
+        const trip = tripData.get({plain: true});
         console.log(trip);
 
         res.render('Trip', {
