@@ -24,9 +24,9 @@ SO I can plan my next trip or suggest a location to any acquiescence
 
 The following images shows the HTML’s appearance and functionality:
 
-![Webpage window of the trip page titled “Trips” features a carousel of images from the trip as the first element, followed by the trip details, the users apart of the trip, and lastly the comment section.]()
+![Webpage window of the trip page titled “Trips” features a carousel of images from the trip as the first element, followed by the trip details, the users apart of the trip, and lastly the comment section.](public/Images/Jet-Set-Vacations.png)
 
-![Webpage window titled “Homepage” features a Carousel of random images from trips on the site with a button underneath describing Adventure Awaits which is used to login or register a new account.]()     
+![Webpage window titled “Homepage” features a Carousel of random images from trips on the site with a button underneath describing Adventure Awaits which is used to login or register a new account.](public/Images/Jet-Set-Vacations-Home.png)     
   
 ## Installation
   No Installation Application is hosted
