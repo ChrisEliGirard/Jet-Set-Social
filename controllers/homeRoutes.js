@@ -97,4 +97,13 @@ router.get('/signup', (req, res) => {
   });
 });
 
+router.get('/tripcreate', (req,res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('tripCreate', {});
+});
+
 module.exports = router;

@@ -1,5 +1,6 @@
 <!--Main Content-->
 <!-- Main Body Container -->
+
 <div
   class="w-full h-auto py-16 px-2 sm:shadow-sm">
   <div class="flex-block sm:flex columns-1 sm:columns-2 px-2">
@@ -14,9 +15,11 @@
       <div id="trips-container" class="container space-y-3 border-4 border-green-900 bg-gradient-to-t from-lime-100 via-stone-200 to-stone-200 rounded">
         {{#if trips.length}}
         {{#each trips as |trip|}}
+        
         <div id="trip-card"
           class="container flex-block sm:flex sm:col-2 mx-auto content-center h-max border-green-900">
           <figure id="trip-photo" class="sm:float-left sm:w-1/2">
+          
             <a href="/trips/{{trip.id}}">
               <img src="{{getImage trip.images}}" class="flex-shrink sm:rounded-none"
                 alt="Trip Photo of {{trip.name}}" />
@@ -69,6 +72,4 @@
   <div id="overlay"></div>
 </div>
 
-{{!--
-<script src="/public/js/tripCreateForm.js"></script> --}}
 <script src="/public/js/profile.js"></script>

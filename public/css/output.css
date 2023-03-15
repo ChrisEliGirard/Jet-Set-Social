@@ -1550,6 +1550,11 @@ input:checked + .toggle-bg {
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
+
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(14 159 110 / var(--tw-border-opacity));
+
 .border-green-900 {
   --tw-border-opacity: 1;
   border-color: rgb(1 71 55 / var(--tw-border-opacity));
