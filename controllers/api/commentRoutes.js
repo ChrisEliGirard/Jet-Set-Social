@@ -14,30 +14,37 @@ router.get('/', async (req, res) => {
 
 // GET Comment by id
 router.get('/:id', async (req, res) => {
-    try {
-      const commentData = await Comments.findByPk(req.params.id);
+  try {
+    const commentData = await Comments.findByPk(req.params.id);
   
-      if (!commentData) {return res.status(404).json({message: 'No Location found with that id!'})};
+    if (!commentData) { return res.status(404).json({ message: 'No comment found with that id!' }); };
   
-      res.status(200).json(commentData);
-    } catch (err) {return res.status(404).json(err)};
-  })
+    res.status(200).json(commentData);
+  } catch (err) { return res.status(404).json(err); };
+});
   
   // CREATE a new Comment
   router.post('/', async (req, res) => {
     try {
       const tripComment = {
-        comment: req.body.newComment,
-        location: req.body.location,
+        comment: req.body.comment,
+        location_id: req.body.location,
         user_id: req.session.user_id,
+        trip_id: req.body.post_index,
 
       }
-      const newComment = await comments.create(
-        ...req.body
+
+      console.log(tripComment);
+      // return res.status(200).json(tripComment);
+
+      const newComment = await Comments.create(
+        tripComment
       );
-  
+
       res.status(200).json(newComment);
-    } catch (err) {res.status(400).json(err)};
+    } catch (err) {
+      res.status(400).json(err);
+    };
   });
   
   // UPDATE a Comment

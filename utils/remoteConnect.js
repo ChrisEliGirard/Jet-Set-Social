@@ -13,7 +13,7 @@ let driveClient;
 const folderName = 'Jet-Social';
 let folder;
 
-const createDriveClient = async (clientId, clientSecret, redirectUri, refreshToken) => {
+const createDriveClient = async () => {
 	const client = await new google.auth.OAuth2(clientId, clientSecret, redirectUri);
 
 	client.setCredentials({ refresh_token: refreshToken });
@@ -106,7 +106,7 @@ const deleteFile = async (fieldValue) => {
 };
 
 (async () => {
-	await createDriveClient(clientId, clientSecret, redirectUri, refreshToken);
+	await createDriveClient();
 
 	folder = await searchFolder(folderName).catch((error) => {
 		console.error(error);

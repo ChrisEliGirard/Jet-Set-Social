@@ -59,14 +59,18 @@
                 </div>
             </div>
         </section>
-        <section id="trip-comments" class="block carousel-width columns-1 sm:columns-1 mt-4">
+        <section id="trip-comments" class="block carousel-width columns-1 sm:columns-1 mt-4" data-trip="{{id}}">
             <div id="trip-comments-card" class="block w-full justify-center sm:float-left columns-1 sm:columns-1 border-border-green bg-gray-100 carousel-border">
                 <div class="bg-gray-100 pb-1">
                     <h2 class="py-2 text-center font-bold border-b-4 border-gray-400 bg-brown-700">Comments</h2>
                     {{#each comments}}
-                        <div class="mb-3 m-3 text-center border-gray-600 border-2 rounded-md">
+                        <div class="mb-3 m-3 text-center border-gray-600 border-2 rounded-md" data-location="{{location_id}}">
                             <h3 class="flex font-bold bg-lime-600 border-b-2 rounded-t-md indent-1">{{user.name}} <a class="ml-1 mt-1 text-xs font-semibold">on: {{format_date date_created}}</a></h3>
-                            <p class="font-semibold rounded-b-md bg-white">{{comment}}</p>
+                            <p id="comment{{@index}}" class="font-semibold rounded-b-md bg-white">{{comment}}</p>
+                            {{#if isAllowed}}
+                                <button id="update" data-comment="{{id}}" class="btn btn-primary btn-block py-3" type="submit">Update</button>
+                                <button id="delete" data-comment="{{id}}" class="btn btn-primary btn-block py-3" type="submit">Delete</button>
+                            {{/if}}
                         </div>
                     {{/each}}
                 </div>
@@ -83,7 +87,7 @@
                         </div>
 
                         <div class="">
-                            <button id="newComment" data-trip="{{id}}" class="btn btn-primary btn-block py-3" type="submit">
+                            <button id="newComment" class="btn btn-primary btn-block py-3" type="submit">
                                 Submit
                             </button>
                         </div>
