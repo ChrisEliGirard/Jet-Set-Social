@@ -3,31 +3,31 @@
 
 <div
   class="w-full h-auto py-16 px-2 sm:shadow-sm">
-  <div class="flex-block sm:flex columns-1 sm:columns-2 px-2">
+  <div class="block lg:flex px-2">
     <!-- Profile Image Div -->
-    <div id="avatar" class="break-after-column w-20 pb-0 sm:pb-0 mr-2">
+    <div id="avatar" class="break-after-column md:justify w-20 pb-0 sm:pb-0 mr-2">
       <img src="{{profile_image}}" class="rounded-full shadow-lg sm:w-20 md:w-40 lg:w-40 border-4 border-green-900"
         alt="{{image_name}}" />
       <h2 class="text-lime-500 text-font-bold">{{name}}</h2>
     </div>
     <!-- Container for All the Trip Cards -->
-    <div>
-      <div id="trips-container" class="container space-y-3 border-4 border-green-900 bg-gradient-to-t from-lime-100 via-stone-200 to-stone-200 rounded">
+    <div class="w-full">
+      <div id="trips-container" class="flex flex-col space-y-3 border-4 rounded border-green-900 bg-gradient-to-t from-lime-100 via-stone-200 to-stone-200">
         {{#if trips.length}}
         {{#each trips as |trip|}}
         
         <div id="trip-card"
-          class="container flex-block sm:flex sm:col-2 mx-auto content-center h-max border-green-900">
-          <figure id="trip-photo" class="sm:float-left sm:w-1/2">
+          class="flex flex-col lg:flex-row border-y-4 border-green-900">
+          <figure id="trip-photo" class="flex w-full float-left">
           
             <a href="/trips/{{trip.id}}">
-              <img src="{{getImage trip.images}}" class="flex-shrink sm:rounded-none"
+              <img src="{{getImage trip.images}}" class="sm:rounded-none"
                 alt="Trip Photo of {{trip.name}}" />
             </a>
 
           </figure>
           <div id="trip-details"
-            class="sm:float-right sm:w-1/2 border-l-4 border-b-4 border-green-900">
+            class="w-full lg:border-l-4 border-green-900">
             <a href="/trips/{{trip.id}}">
               <h2 class="mx-0 py-2 text-center text-4xl font-bold border-b-4 border-green-900 bg-gradient-to-r from-brown-800 via-brown-500 to-brown-800">{{trip.name}}</h2>
             </a>
@@ -35,17 +35,19 @@
             {{#if trip.taggeds.length}}
             <div>
               <p class="pl-2 pt-2 text-lg text-lime-500 underline">Tagged friends on this trip were:</p>
-              {{#each trip.taggeds as |friend|}}
-              <div id="avatar" class="break-after-column w-40 pb-0 sm:pb-0 ml-2">
-                <a href="/profile/{{friend.user_id}}">
-                  <img src="{{friend.user.profile_image}}"
-                    class="rounded-full shadow-lg sm:w-20 md:w-30 lg:w-30 border-2 border-green-900 mt-2"
-                    alt="{{friend.user.image_name}}" />
-                  <h2 class="text-black text-font-bold">{{friend.user.name}}</h2>
-                </a>
+              <div class="flex gap-x-2 justify-center">
+                {{#each trip.taggeds as |friend|}}
+                <div id="avatar" class="flex content-center">
+                  <a href="/profile/{{friend.user_id}}"class="flex flex-col self-center">
+                    <img src="{{friend.user.profile_image}}"
+                      class="flex flex-none w-24 h-24 lg:w-30 lg:h-30 self-center rounded-full shadow-lg border-2 border-green-900 mt-2"
+                      alt="{{friend.user.image_name}}" />
+                    <h2 class="text-black text-center text-font-bold">{{friend.user.name}}</h2>
+                  </a>
 
+                </div>
+                {{/each}}
               </div>
-              {{/each}}
             </div>
             {{/if}}
           </div>
@@ -69,7 +71,13 @@
       </div>
     </div>
   </div>
-  <div id="overlay"></div>
+  {{#if owner}}
+  <div id="TripCreate" class="flex w-full pt-10 place-content-center">
+    <a href="/tripcreate">
+      <div class="flex grow-0 shrink-1 basis-1/12 px-2 rounded-3xl border-2 border-green-900 bg-lime-100">Create A New Trip</div>
+    </a>
+  </div>
+  {{/if}}
 </div>
 
 <script src="/public/js/profile.js"></script>
