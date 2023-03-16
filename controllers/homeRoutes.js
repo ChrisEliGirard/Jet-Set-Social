@@ -97,13 +97,19 @@ router.get('/signup', (req, res) => {
   });
 });
 
-router.get('/tripcreate', (req,res) => {
+router.get('/tripcreate', async (req,res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
   }
-
-  res.render('tripCreate', {});
+  const userData = await Users.findAll({
+    attributes: {exclude: ['password', 'profile_image', 'image_name']},
+  });
+  const users = userData.map((user) => user.get({plain: true}));
+  console.log(users);
+  res.render('tripCreate', {
+    users,
+  });
 });
 
 module.exports = router;

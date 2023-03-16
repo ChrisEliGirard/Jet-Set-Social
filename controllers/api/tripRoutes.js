@@ -31,6 +31,7 @@ router.post('/', upload.any(), async (req, res) => {
   try {
     // files is a standard variable that comes in the request.
     const { body, files } = req;
+    // Uploads the images to google drive and returns their locating information
     let result = await remoteConnect.saveFiles(files); 
 
     // Assuming the body uses our naming conventions
@@ -39,14 +40,18 @@ router.post('/', upload.any(), async (req, res) => {
       description: `${body.tripDescription}`,
       user_id: `${req.session.user_id}`
     }
-
+    
+    // Creates the Trip
     const tripData = await Trips.create(newTrip);
-    let tags =
-      {
-        user_id: 4,
-        trip_id: tripData.id
-      };
+    
+    for (let i = 0; i < body.length; i++) {
+      const taggedData = array[i];
+      
+    }
+    // Creates the tagged users relation
     const tagData = await Tagged.create(tags)
+    
+    // Creates the Images and tags them to the trip
     let images = []
     for (let i = 0; i < result.length; i++) {
       let imageData = {
@@ -57,9 +62,11 @@ router.post('/', upload.any(), async (req, res) => {
       }
       let image = await Images.create(imageData);
       images.push(image)
-    }
-    console.log(newTrip);
-    res.status(200).json(newTrip);
+    };
+
+    const trip = tripData.get({plain: true});
+
+    res.status(200).json({id: trip.id});
   } catch (err) {res.status(400).json(err), console.log(err)};
 });
 
