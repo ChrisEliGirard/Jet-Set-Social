@@ -14,20 +14,29 @@ router.get('/', async (req, res) => {
 
 // GET Comment by id
 router.get('/:id', async (req, res) => {
-    try {
-      const commentData = await Comments.findByPk(req.params.id);
+  try {
+    const commentData = await Comments.findByPk(req.params.id);
   
-      if (!commentData) {return res.status(404).json({message: 'No Location found with that id!'})};
+    if (!commentData) { return res.status(404).json({ message: 'No Comment found with that id!' }); };
   
-      res.status(200).json(commentData);
-    } catch (err) {return res.status(404).json(err)};
-  })
-  
+    res.status(200).json(commentData);
+  } catch (err) { return res.status(404).json(err); };
+});
+
+
   // CREATE a new Comment
   router.post('/', async (req, res) => {
     try {
-      const newComment = await comments.create(
-        ...req.body
+      const tripComment = {
+        comment: req.body.comment,
+        location_id: req.body.location,
+        user_id: req.session.user_id,
+        trip_id: req.body.tripIndex,
+
+      };
+
+      const newComment = await Comments.create(
+        tripComment
       );
   
       res.status(200).json(newComment);
@@ -37,14 +46,23 @@ router.get('/:id', async (req, res) => {
   // UPDATE a Comment
   router.put('/:id', async (req, res) => {
     try {
-      const commentData = await Comments.update(req.body,
-      {
-          where: {id: req.params.id}
+      const commentData = {
+        trip_id: req.body.tripIndex,
+        comment: req.body.comment,
+        user_id: req.session.user_id,
+        date_posted: req.body.date,
+        location_id: req.body.location,
+      };
+
+      const updatedComment = await Comments.update(commentData, {
+        where: {
+          id: req.params.id,
+        },
       });
+
+      if (!updatedComment) { return res.status(404).json({ message: 'No Comment found with that id!' }); };
   
-      if (!commentData) {return res.status(404).json({ message: 'No Location found with that id!' })};
-  
-      res.status(200).json(commentData);
+      res.status(200).json(updatedComment);
     } catch (err) {res.status(404).json(err)};
   })
   
@@ -55,7 +73,7 @@ router.get('/:id', async (req, res) => {
         where: {id: req.params.id}
       });
   
-      if (!commentData) {return res.status(404).json({ message: 'No Location found with this id!' })};
+      if (!commentData) { return res.status(404).json({ message: 'No Comment found with this id!' }); };
   
       res.status(200).json(commentData);
     } catch (err) {res.status(500).json(err)};
