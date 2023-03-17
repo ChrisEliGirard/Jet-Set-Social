@@ -67,15 +67,16 @@ router.post('/', upload.any(), async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const TripData = await Trips.update(req.body,
-    {
-        where: {id: req.params.id}
-    });
+      {
+        where: { id: req.params.id }
+      });
 
-    if (!TripData) {return res.status(404).json({ message: 'No Location found with that id!' })};
+    if (!TripData) { return res.status(404).json({ message: 'No Location found with that id!' }); };
 
     res.status(200).json(TripData);
-  } catch (err) {res.status(404).json(err)};
-})
+  } catch (err) { res.status(404).json(err); };
+});
+
 // DELETE a Trip
 router.delete('/:id', async (req, res) => {
   try {

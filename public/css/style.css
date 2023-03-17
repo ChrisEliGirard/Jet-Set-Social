@@ -295,6 +295,9 @@ image {
   pointer-events: all;
 }
 
+.no-display {
+  display: none;
+}
 
 /*Responsive*/
 
