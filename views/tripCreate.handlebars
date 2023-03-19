@@ -23,7 +23,7 @@
 
                 <!-- Tag Other Users -->
             <div id="tagged-user-div">
-                <label for="tagUsers" class="text-sm text-lime-400">Enter your friend's Username each followed by an appostraphe</label><br>
+                <label for="tagUsers" class="text-sm text-lime-400">Enter your friend's Username each followed by a comma</label><br>
                 <input type="text" list="users" name="tagUsers" id="tagUsers1"
                     class="h-8 w-full rounded-md border text-sm pl-2 outline-lime-600 shadow-sm" placeholder="UserName"/>
                 <datalist id="users">
@@ -32,7 +32,6 @@
                     {{/each}}
                 </datalist>
             </div>
-            <button class="border-2 border-lime-400 bg-lime-400 text-white py-1 mt-2 w-full rounded-md hover:bg-transparent hover:text-lime-400 font-semibold" id="addUser">Tag Another User</button>
                 <!-- Sign up / submit button -->
             <input type="submit" name="" id="tripCreate"
                 class="border-2 border-lime-400 bg-lime-400 text-white py-1 mt-2 w-full rounded-md hover:bg-transparent hover:text-lime-400 font-semibold" required/><br>

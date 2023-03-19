@@ -35,7 +35,7 @@ router.get('/', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true,
+      logged_in: req.session.logged_in,
       owner: true,
       full_name: req.session.full_name,
       profile_url: req.session.profile_url,
@@ -81,7 +81,7 @@ router.get('/:id', async (req, res) => {
             const user = userData.get({ plain: true });
             res.render('profile', {
                 ...user,
-                logged_in: req.session.logged_in,
+              logged_in: req.session.logged_in,
               owner: false,
               full_name: req.session.full_name,
               profile_url: req.session.profile_url,

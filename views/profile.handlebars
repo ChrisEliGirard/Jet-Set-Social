@@ -57,16 +57,18 @@
 
         {{#if taggeds.length}}
         <p class="pl-2 pt-2 text-lg text-lime-500 underline">You can view my trips with friends here:</p>
+        <div class="flex gap-x-4 px-4">
         {{#each taggeds as |member|}}
-        <div id="avatar" class="break-after-column w-50 ml-2">
+        <div id="avatar" class="flex content-center">
           <a href="/trips/{{member.trip_id}}">
             <img src="{{getImage member.trip.images}}"
-              class="rounded shadow-lg sm:w-20 md:w-30 lg:w-30 border-2 border-green-900"
+              class="rounded shadow-lg sm:w-20 md:w-30 lg:w-50 border-2 border-green-900"
               alt="Trip Photo of {{member.trip.name}}" />
             <h2 class="text-black text-font-bold mb-2">{{member.trip.name}}</h2>
           </a>
         </div>
         {{/each}}
+        </div>
         {{/if}}
       </div>
     </div>
