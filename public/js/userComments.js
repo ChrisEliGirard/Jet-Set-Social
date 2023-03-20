@@ -27,6 +27,8 @@ newCommentEl.onclick = async (event) => {
 		location: tripLocation,
 	};
 
+	console.log(addComment);
+
 	// send the add new comment request
 	const response = await fetch('/api/comments/', {
 		method: 'POST',

@@ -103,12 +103,15 @@ router.get('/tripcreate', async (req,res) => {
     return;
   }
   const userData = await Users.findAll({
-    attributes: {exclude: ['password', 'profile_image', 'image_name']},
+    attributes: { exclude: ['password'] },
   });
-  const users = userData.map((user) => user.get({plain: true}));
-  console.log(users);
+  const users = userData.map((user) => user.get({ plain: true }));
   res.render('tripCreate', {
     users,
+    logged_in: req.session.logged_in,
+    full_name: req.session.full_name,
+    profile_url: req.session.profile_url,
+    profile_alt: req.session.profile_alt
   });
 });
 

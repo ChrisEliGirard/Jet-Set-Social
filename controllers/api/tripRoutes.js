@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trips, Images, Tagged } = require('../../models');
+const { Trips, Images, Tagged, Users } = require('../../models');
 const withAuth = require('../../utils/auth');
 const remoteConnect = require('../../utils/remoteConnect');
 const multer = require('multer');
@@ -31,7 +31,7 @@ router.post('/', upload.any(), async (req, res) => {
   try {
     // files is a standard variable that comes in the request.
     const { body, files } = req;
-    let result = await remoteConnect.saveFiles(files); 
+    let result = await remoteConnect.saveFiles(files);
 
     // Assuming the body uses our naming conventions
     let newTrip = {
@@ -41,25 +41,38 @@ router.post('/', upload.any(), async (req, res) => {
     }
 
     const tripData = await Trips.create(newTrip);
-    let tags =
-      {
-        user_id: 4,
-        trip_id: tripData.id
-      };
-    const tagData = await Tagged.create(tags)
-    let images = []
+    const trip = tripData.get({ plain: true });
+    let tagFriends = await body.tagUsers.split(',').map(element => element.trim()
+    );
+
+    // Add tagged friends to the trip
+    for (let i = 0; i < tagFriends.length; i++) {
+      let userData = await Users.findOne({ where: { username: tagFriends[i] } });
+      if (userData) {
+        const user = userData.get({ plain: true });
+        const aTag =
+        {
+          user_id: user.id,
+          trip_id: trip.id
+        };
+        await Tagged.create(aTag);
+      }
+    }
+
+    // Add any trip image to the trip
     for (let i = 0; i < result.length; i++) {
       let imageData = {
         image: `https://drive.google.com/uc?export=view&id=${result[i].file_id}`,
-        image_name: result[i].filename,
+        image_name: `${result[i].filename}`,
+        description: `${trip.description}`,
         user_id: req.session.user_id,
-        trip_id: tripData.id,
+        trip_id: trip.id,
       }
-      let image = await Images.create(imageData);
-      images.push(image)
+
+      await Images.create(imageData);
     }
-    console.log(newTrip);
-    res.status(200).json(newTrip);
+    console.log(trip);
+    res.status(200).json(trip);
   } catch (err) {res.status(400).json(err), console.log(err)};
 });
 

@@ -11,7 +11,8 @@ const tripCreateFormHandler = async (event) => {
 	});
 
 	if (response.ok) {
-		document.location.replace(`/trips/${res.trip.id}`);
+		const aTrip = await response.json();
+		document.location.replace(`/trips/${aTrip.id}`);
 	} else {
 		alert(response.statusText);
 	}
